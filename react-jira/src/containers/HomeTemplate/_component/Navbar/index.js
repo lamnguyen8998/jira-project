@@ -10,36 +10,36 @@ export default class Navbar extends Component {
                         {/* navbar */}
                         <nav className='flex justify-between bg-gray-900 text-white w-screen'>
                             <div className='px-5 xl:px-12 py-6 flex w-full items-center'>
-                                <NavLink activeClassName='active' className='text-3xl font-bold font-heading' to='/'>
+                                <Link className='text-3xl font-bold font-heading' to='/'>
                                     {/* <img class="h-9" src="logo.png" alt="logo"> */}
                                     Logo Here.
-                                </NavLink>
+                                </Link>
 
                                 <ul className='hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12'>
                                     <li>
-                                        <NavLink activeClassName='active' className='hover:text-gray-200' to='/'>
+                                        <NavLink exact className='hover:text-gray-200' to='/'>
                                             Home
                                         </NavLink>
                                     </li>
                                     <li>
-                                        <NavLink activeClassName='active' className='hover:text-gray-200' to='/management'>
+                                        <NavLink className='hover:text-gray-200' to='/management'>
                                             Management
                                         </NavLink>
                                     </li>
                                     <li>
-                                        <NavLink activeClassName='active' className='hover:text-gray-200' to='/auth'>
-                                            Sign In
+                                        <NavLink className='hover:text-gray-200' to='/auth'>
+                                            Login
                                         </NavLink>
                                     </li>
                                     <li>
-                                        <NavLink activeClassName='active' className='hover:text-gray-200' to='/register'>
+                                        <NavLink className='hover:text-gray-200' to='/register'>
                                             Register
                                         </NavLink>
                                     </li>
                                 </ul>
 
                                 <div className='hidden xl:flex space-x-5 items-center'>
-                                    <NavLink activeClassName='active' className='hover:text-gray-200' to='/'>
+                                    <Link className='hover:text-gray-200' to='/'>
                                         <svg
                                             xmlns='http://www.w3.org/2000/svg'
                                             className='h-6 w-6'
@@ -53,8 +53,8 @@ export default class Navbar extends Component {
                                                 d='M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z'
                                             />
                                         </svg>
-                                    </NavLink>
-                                    <NavLink activeClassName='active' className='flex items-center hover:text-gray-200' to='/'>
+                                    </Link>
+                                    <Link className='flex items-center hover:text-gray-200' to='/'>
                                         <svg
                                             xmlns='http://www.w3.org/2000/svg'
                                             className='h-6 w-6'
@@ -72,9 +72,9 @@ export default class Navbar extends Component {
                                             <span className='animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75' />
                                             <span className='relative inline-flex rounded-full h-3 w-3 bg-pink-500'></span>
                                         </span>
-                                    </NavLink>
+                                    </Link>
                                     {/* Sign In / Register      */}
-                                    <NavLink activeClassName='active' className='flex items-center hover:text-gray-200' to='/'>
+                                    <Link className='flex items-center hover:text-gray-200' to='/'>
                                         <svg
                                             xmlns='http://www.w3.org/2000/svg'
                                             className='h-6 w-6 hover:text-gray-200'
@@ -88,11 +88,11 @@ export default class Navbar extends Component {
                                                 d='M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z'
                                             />
                                         </svg>
-                                    </NavLink>
+                                    </Link>
                                 </div>
                             </div>
 
-                            <NavLink activeClassName='active' className='xl:hidden flex mr-6 items-center' to='/'>
+                            <Link className='xl:hidden flex mr-6 items-center' to='/'>
                                 <svg
                                     xmlns='http://www.w3.org/2000/svg'
                                     className='h-6 w-6 hover:text-gray-200'
@@ -110,8 +110,8 @@ export default class Navbar extends Component {
                                     <span className='animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75' />
                                     <span className='relative inline-flex rounded-full h-3 w-3 bg-pink-500'></span>
                                 </span>
-                            </NavLink>
-                            <NavLink activeClassName='active' className='navbar-burger self-center mr-12 xl:hidden' to='/'>
+                            </Link>
+                            <Link className='navbar-burger self-center mr-12 xl:hidden' to='/'>
                                 <svg
                                     xmlns='http://www.w3.org/2000/svg'
                                     className='h-6 w-6 hover:text-gray-200'
@@ -125,11 +125,11 @@ export default class Navbar extends Component {
                                         d='M4 6h16M4 12h16M4 18h16'
                                     />
                                 </svg>
-                            </NavLink>
+                            </Link>
                         </nav>
                     </section>
                 </div>
-            </Fragment>
+            </Fragment >
         )
     }
 }
