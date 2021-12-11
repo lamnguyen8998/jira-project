@@ -1,11 +1,36 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
+import { useDispatch, useSelector } from "react-redux"
+import { actAddUser } from "./modules/actions"
 
+export default function Register() {
+    const loading = useSelector((state) => state.addUserReducer.loading);
+    const error = useSelector((state) => state.addUserReducer.error);
+    const dispatch = useDispatch()
+    const [state, setstate] = useState({
+        email: "",
+        passWord: "",
+        name: "",
+        phoneNumber: ""
+    })
 
-export default class Register extends Component {
-    render() {
-        return (
-            <Fragment>
-                <div className='bg-white flex items-center justify-center px-5 py-5'>
+    const handleOnChange = (event) => {
+        const { name, value } = event.target;
+        setstate({
+            ...state,
+            [name]: value,
+        })
+    }
+
+    console.log(state)
+
+    const handleAddUser = (event) => {
+        event.preventDefault()
+        dispatch(actAddUser(state))
+    }
+    return (
+        <Fragment>
+            <form onSubmit={handleAddUser}>
+                <div className='bg-white flex items-center justify-center px-5 py-5' >
                     <div
                         className='bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden'
                         style={{ maxWidth: 1000 }}>
@@ -218,30 +243,35 @@ export default class Register extends Component {
                                     <div className='flex -mx-3'>
                                         <div className='w-1/2 px-3 mb-5'>
                                             <label htmlFor className='text-xs font-semibold px-1'>
-                                                First name
+                                                name
                                             </label>
                                             <div className='flex'>
                                                 <input
 
                                                     type='text'
                                                     className='w-full pl-2 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500'
-                                                    placeholder='Khai'
+                                                    placeholder='Name'
+                                                    name="name"
+                                                    onChange={handleOnChange}
                                                 />
                                             </div>
                                         </div>
                                         <div className='w-1/2 px-3 mb-5'>
                                             <label htmlFor className='text-xs font-semibold px-1'>
-                                                Last name
+                                                Your Phone number
                                             </label>
                                             <div className='flex'>
                                                 <input
 
                                                     type='text'
                                                     className='w-full pl-2 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500'
-                                                    placeholder='Pham'
+                                                    placeholder='Your phone number'
+                                                    name="phoneNumber"
+                                                    onChange={handleOnChange}
                                                 />
                                             </div>
                                         </div>
+
                                     </div>
                                     <div className='flex -mx-3'>
                                         <div className='w-full px-3 mb-5'>
@@ -251,9 +281,11 @@ export default class Register extends Component {
                                             <div className='flex'>
                                                 <input
 
-                                                    type='email'
+                                                    type='text'
                                                     className='w-full pl-2 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500'
                                                     placeholder='khaipnp@example.com'
+                                                    name='email'
+                                                    onChange={handleOnChange}
                                                 />
                                             </div>
                                         </div>
@@ -268,14 +300,16 @@ export default class Register extends Component {
 
                                                     type='password'
                                                     className='w-full pl-2 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500'
-                                                    placeholder='************'
+                                                    placeholder='passWord'
+                                                    name='passWord'
+                                                    onChange={handleOnChange}
                                                 />
                                             </div>
                                         </div>
                                     </div>
                                     <div className='flex -mx-3'>
                                         <div className='w-full px-3 mb-5'>
-                                            <button className='block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold'>
+                                            <button type='submit' className='block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold'>
                                                 REGISTER NOW
                                             </button>
                                         </div>
@@ -285,7 +319,7 @@ export default class Register extends Component {
                         </div>
                     </div>
                 </div>
-            </Fragment>
-        )
-    }
+            </form>
+        </Fragment>
+    )
 }

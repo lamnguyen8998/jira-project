@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { actAuthApi } from "./modules/actions"
-import { connect } from "react-redux"
+import { connect, useSelector, useDispatch } from "react-redux"
+import Loader from "./../../../components/Loader"
 
 
 
 
 function AuthPage(props) {
     const [state, setState] = useState({ email: "", passWord: "" });
-
-
-    console.log(state)
+    const dispatch = useDispatch();
+    const loading = useSelector((state) => state.authReducer.loading)
+    const error = useSelector((state) => state.authReducer.error)
 
     const handleOnChange = (event) => {
         const { name, value } = event.target;
@@ -23,8 +24,12 @@ function AuthPage(props) {
 
     const handleLogin = (event) => {
         event.preventDefault();
-        props.login(state)
+        dispatch(actAuthApi(state, props.history))
+    }
 
+    if (loading) return <Loader />
+    const renderNoti = () => {
+        return error && (<div className="alert alert-danger">Tài khoản hoặc mật khẩu không đúng</div>)
 
     }
     return (
@@ -66,6 +71,7 @@ function AuthPage(props) {
                         </div>
                         <div className="w-full md:max-w-md mt-6">
                             <div className="card bg-white shadow-md rounded-lg px-4 py-4 mb-6 ">
+
                                 <form onSubmit={handleLogin}>
                                     <div className="flex items-center justify-center">
                                         <h2 className="text-2xl font-bold tracking-wide">
@@ -75,6 +81,7 @@ function AuthPage(props) {
                                     <h2 className="text-xl text-center font-semibold text-gray-800 mb-2">
                                         Sign In
                                     </h2>
+                                    {renderNoti()}
                                     <input
                                         type="text"
 
@@ -109,15 +116,6 @@ function AuthPage(props) {
         </header>
     );
 }
-const mapDispatchToProps = (dispatch) => {
-    return {
-        login: (user) => {
-            dispatch(actAuthApi(user))
-
-        }
-
-    }
-}
 
 
-export default connect(null, mapDispatchToProps)(AuthPage);
+export default AuthPage;
