@@ -22,7 +22,7 @@ export default class Navbar extends Component {
                                         </NavLink>
                                     </li>
                                     <li>
-                                        <NavLink className='hover:text-gray-200' to='/management'>
+                                        <NavLink className='hover:text-gray-200' to='/projectmanagement'>
                                             Management
                                         </NavLink>
                                     </li>
