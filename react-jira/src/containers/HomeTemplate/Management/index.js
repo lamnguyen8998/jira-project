@@ -1,18 +1,23 @@
 import React, { Component } from 'react'
 import axios from "axios"
+import * as actions from "./modules/actions"
+import { connect } from "react-redux"
+import Loader from "./../../../components/Loader"
+import api from '../../../utils/apiUtils'
 
-export default class Management extends Component {
+class Management extends Component {
+
     componentDidMount() {
-        axios({
-            url: "http://jiranew.cybersoft.edu.vn/api/Project/getAllProject?keyword=678",
-            method: "GET",
-        })
+        // Pending
+        this.props.request()
+        api.get("Project/getAllProject")
             .then((result) => {
+                this.props.success(result.data)
                 console.log(result.data)
 
             })
             .catch((error) => {
-                console.log(error)
+                this.props.failed(error)
             })
     }
 
@@ -97,3 +102,26 @@ export default class Management extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        loading: state.projectManagementReducer.loading,
+        data: state.projectManagementReducer.data
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        request: () => {
+            dispatch(actions.actProjectmanagementRequest());
+        },
+        success: (data) => {
+            dispatch(actions.actProjectmanagementSuccess(data))
+        },
+        failed: (error) => {
+            dispatch(actions.actProjectmanagementFailed(error))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Management)
