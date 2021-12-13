@@ -1,4 +1,11 @@
 import React, { Component } from 'react'
+import {
+    AudioOutlined,
+    EditOutlined,
+    SearchOutlined,
+    DeleteOutlined,
+    CalendarOutlined,
+} from "@ant-design/icons";
 
 export default class TableProjects extends Component {
     render() {
@@ -12,7 +19,7 @@ export default class TableProjects extends Component {
                     <td className="p-4 w-1/4">{item?.categoryName}</td>
                     <td className="p-4 w-1/4">{item?.creator.id} -{item?.creator.name} </td>
                     <td className="p-4 w-1/4">Đang làm</td>
-                    <td className="p-4 w-1/4">Đang làm</td>
+                    <td className="p-4 w-1/4"><EditOutlined style={{ color: "green" }} /> <DeleteOutlined style={{ color: "red" }} /></td>
                 </tr>
 
 
