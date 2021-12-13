@@ -1,28 +1,28 @@
 import React, { Component } from 'react'
-import axios from "axios"
 import * as actions from "./modules/actions"
 import { connect } from "react-redux"
 import Loader from "./../../../components/Loader"
-import api from '../../../utils/apiUtils'
+import TableProjects from './TableProjects'
+
 
 class Management extends Component {
 
     componentDidMount() {
-        // Pending
-        this.props.request()
-        api.get("Project/getAllProject")
-            .then((result) => {
-                this.props.success(result.data)
-                console.log(result.data)
-
-            })
-            .catch((error) => {
-                this.props.failed(error)
-            })
+        this.props.fetchdata()
+        console.log(this.props)
     }
 
+    renderTableprojects = () => {
+        const { data, loading } = this.props;
+        if (loading) return <Loader />;
+        return data?.map((item) => {
+            return <TableProjects key={item.id} item={item} />;
+        });
+    };
 
     render() {
+        const { data, loading } = this.props;
+        if (loading) return <Loader />;
         return (
             <div>
                 <header className="w-full bg-gray-800 p-4 flex justify-between items-center">
@@ -77,20 +77,12 @@ class Management extends Component {
                                         <th className="p-4 w-1/4">members</th>
                                         <th className="p-4 w-1/4">action</th>
                                     </tr>
+
                                 </thead>
                                 {/* Remove the nasty inline CSS fixed height on production and replace it with a CSS class — this is just for demonstration purposes! */}
-                                <tbody className="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full" style={{ height: '50vh' }}>
-                                    <tr className="flex w-full mb-4">
-                                        <td className="p-4 w-1/4">Dogs</td>
-                                        <td className="p-4 w-1/4">Cats</td>
-                                        <td className="p-4 w-1/4">Birds</td>
-                                        <td className="p-4 w-1/4">Fish</td>
-                                        <td className="p-4 w-1/4">Fish</td>
-                                        <td className="p-4 w-1/4">Fish</td>
-                                    </tr>
 
+                                {this.renderTableprojects()}
 
-                                </tbody>
                             </table>
                         </div>
 
@@ -112,14 +104,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        request: () => {
-            dispatch(actions.actProjectmanagementRequest());
-        },
-        success: (data) => {
-            dispatch(actions.actProjectmanagementSuccess(data))
-        },
-        failed: (error) => {
-            dispatch(actions.actProjectmanagementFailed(error))
+        fetchdata: () => {
+            dispatch(actions.actFetchProject())
         }
     }
 }
