@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import "./style.css";
 
 export default class TableProjects extends Component {
     render() {
@@ -31,20 +32,69 @@ export default class TableProjects extends Component {
                         <span className="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">{item?.creator.name}</span>
                     </td>
                     <td className="py-3 px-6 text-center">
-                        <div className="flex items-center justify-center">
+                        {/* <div className="flex items-center justify-center">
                             <img className="w-6 h-6 rounded-full border-gray-200 border transform hover:scale-125" src="https://randomuser.me/api/portraits/men/1.jpg" />
                             <img className="w-6 h-6 rounded-full border-gray-200 border -m-1 transform hover:scale-125" src="https://randomuser.me/api/portraits/women/2.jpg" />
                             <img className="w-6 h-6 rounded-full border-gray-200 border -m-1 transform hover:scale-125" src="https://randomuser.me/api/portraits/men/3.jpg" />
+                        </div> */}
+                        <div class="flex items-center justify-center hover-trigger">
+                            <img className="w-6 h-6 rounded-full border-gray-200 border transform hover:scale-125" src="https://randomuser.me/api/portraits/men/1.jpg" />
+                            <img className="w-6 h-6 rounded-full border-gray-200 border -m-1 transform hover:scale-125" src="https://randomuser.me/api/portraits/women/2.jpg" />
+                            <img className="w-6 h-6 rounded-full border-gray-200 border -m-1 transform hover:scale-125" src="https://randomuser.me/api/portraits/men/3.jpg" />
+                            <div class="absolute bg-white border border-grey-100 px-4 py-2 hover-target">
+                                <section className="antialiased bg-gray-100 text-gray-600">
+                                    <div className="flex flex-col justify-center ">
+                                        <div className="  mx-auto bg-white shadow-lg rounded-sm border border-gray-50">
+
+                                            <div className="p-1">
+                                                <div className="overflow-x-auto">
+                                                    <table className="table-auto w-full">
+                                                        <thead className="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+                                                            <tr>
+                                                                <th className="p-2 whitespace-nowrap">
+                                                                    <div className="font-semibold text-left">ID</div>
+                                                                </th>
+                                                                <th className="p-2 whitespace-nowrap">
+                                                                    <div className="font-semibold text-left">Avatar</div>
+                                                                </th>
+                                                                <th className="p-2 whitespace-nowrap">
+                                                                    <div className="font-semibold text-left">Name</div>
+                                                                </th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody className="text-sm divide-y divide-gray-100">
+                                                            <tr>
+                                                                <td className="p-2 whitespace-nowrap">
+                                                                    <div className="flex items-center">
+
+                                                                        <div className="font-medium text-gray-800">971</div>
+                                                                    </div>
+                                                                </td>
+                                                                <td className="p-2 whitespace-nowrap">
+                                                                    <div className="flex items-center justify-center">
+                                                                        <img className="w-6 h-6 rounded-full border-gray-200 border -m-1 transform hover:scale-125" src="https://randomuser.me/api/portraits/men/3.jpg" />
+                                                                    </div>
+                                                                </td>
+                                                                <td className="p-2 whitespace-nowrap">
+                                                                    <div className="text-left font-medium text-green-500">Lâm Nguyễn</div>
+                                                                </td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                            </div>
                         </div>
+
                     </td>
                     <td className="py-3 px-6 text-center">
                         <div className="flex item-center justify-center">
-                            <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                </svg>
-                            </div>
                             <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
@@ -65,27 +115,3 @@ export default class TableProjects extends Component {
         )
     }
 }
-
-
-
-
-// <tbody className="bg-grey-light items-center justify-between w-full" >
-// <tr className="flex w-full mb-2">
-//     <td className="p-4 w-1/4">{item?.id}</td>
-//     <td className="p-4 w-1/4">{item?.projectName}</td>
-//     <td className="p-4 w-1/4">{item?.categoryName}</td>
-//     <td className="p-4 w-1/4">{item?.creator.id} -{item?.creator.name} </td>
-//     <td className="p-4 w-1/4">
-//         <a href="#">
-//             {/*use the URL you want to use*/}
-//             <button className="btn">+</button>
-//         </a>
-
-
-
-//     </td>
-//     <td className="p-4 w-1/4"><EditOutlined style={{ color: "green" }} /> <DeleteOutlined style={{ color: "red" }} /></td>
-// </tr>
-
-
-// </tbody>
