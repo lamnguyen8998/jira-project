@@ -21,7 +21,7 @@ class Management extends Component {
     };
 
     render() {
-        const { data, loading } = this.props;
+        const { loading } = this.props;
         if (loading) return <Loader />;
         return (
             <div className="overflow-x-auto">

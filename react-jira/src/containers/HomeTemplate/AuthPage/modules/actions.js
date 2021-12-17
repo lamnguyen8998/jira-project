@@ -11,7 +11,7 @@ export const actAuthApi = (user, history) => {
                 localStorage.setItem("User", JSON.stringify(result.data.content))
 
                 //redirect management 
-                history.replace("/projectmanagement")
+                history.replace("/projectmanagement/")
                 dispatch(actAuthSuccess(result.data.content));
             })
             .catch((error) => {

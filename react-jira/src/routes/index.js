@@ -27,7 +27,7 @@ const routeHome = [{
 },
 {
     exact: false,
-    path: "/projectmanagement",
+    path: "/projectmanagement/",
     component: Management
 }]
 const routeAdmin = []

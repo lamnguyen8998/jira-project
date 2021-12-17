@@ -7,6 +7,7 @@ export const actFetchProject = () => {
         api.get("/Project/getAllProject")
             .then((result) => {
                 dispatch(actProjectmanagementSuccess(result.data.content))
+                console.log(result.data.content)
 
             })
             .catch((error) => {
