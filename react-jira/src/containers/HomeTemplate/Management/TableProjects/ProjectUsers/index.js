@@ -13,7 +13,7 @@ export default class ProjectUsers extends Component {
                     </td>
                     <td className="p-2 whitespace-nowrap">
                         <div className="flex items-center justify-center">
-                            <img className="w-6 h-6 rounded-full border-gray-200 border -m-1 transform hover:scale-125" src="https://randomuser.me/api/portraits/men/3.jpg" />
+                            <img className="w-6 h-6 rounded-full border-gray-200 border -m-1 transform hover:scale-125" src={this.props.item?.avatar} />
                         </div>
                     </td>
                     <td className="p-2 whitespace-nowrap">
