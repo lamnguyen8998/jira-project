@@ -29,7 +29,8 @@ const routeHome = [{
     exact: false,
     path: "/projectmanagement/",
     component: Management
-}]
+},
+]
 const routeAdmin = []
 
 function renderRouteHome() {

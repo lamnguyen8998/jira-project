@@ -1,3 +1,5 @@
 export const PROJECT_MANAGER_REQUEST = "@projectManagementReducer/PROJECT_MANAGER_REQUEST"
 export const PROJECT_MANAGER_SUCCESS = "@projectManagementReducer/PROJECT_MANAGER_SUCCESS"
 export const PROJECT_MANAGER_FAILED = "@projectManagementReducer/PROJECT_MANAGER_FAILED"
+export const PROJECT_MANAGER_DELETE = "@projectManagementReducer/PROJECT_MANAGER_DELETE"
+export const PROJECT_MANAGER_DELETEUSER = "@projectManagementReducer/PROJECT_MANAGER_DELETEUSER"

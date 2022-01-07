@@ -25,6 +25,13 @@ const projectManagementReducer = (state = initialState, action) => {
             state.error = action.payload;
             return { ...state };
 
+        case ActionType.PROJECT_MANAGER_DELETE:
+            return { ...state }
+
+        case ActionType.PROJECT_MANAGER_DELETEUSER:
+            console.log(action.payload)
+            return { ...state }
+
         default:
             return { ...state };
     }
